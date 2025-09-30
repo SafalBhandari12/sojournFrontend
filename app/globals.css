@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sojourn-green: #2f5233;
+  --color-sojourn-teal: #4a90a4;
+  --color-sojourn-cream: #f5f5dc;
+  --color-sojourn-gray: #4a5568;
+
+  --font-display: "Montserrat", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+/* Global App styles */
+.App {
+  text-align: left;
+}
+
+/* Custom component styles */
+.btn-primary {
+  background-color: #2f5233;
+  color: #f5f5dc;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: rgba(47, 82, 51, 0.9);
+}
+
+.btn-secondary {
+  background-color: #f5f5dc;
+  color: #2f5233;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid #2f5233;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(245, 245, 220, 0.9);
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2f5233;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+.feature-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
