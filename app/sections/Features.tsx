@@ -98,8 +98,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
       <div className='flex items-start'>
-        <div className='bg-green-100 p-3 rounded-lg mb-4'>
-          <Icon className='w-6 h-6 text-green-800' />
+        <div className='bg-[#e4eded] p-3 rounded-lg mb-4'>
+          <Icon className='w-6 h-6 text-color-primary' />
         </div>
       </div>
       <h3 className='text-xl font-semibold text-green-800 mb-2'>{title}</h3>

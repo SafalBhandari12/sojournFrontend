@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const destinations = [
   { name: "Gulmarg", activity: "Skiing" },
@@ -15,11 +16,15 @@ const Destinations = () => {
   return (
     <section className='py-16 md:py-24 relative' id='destinations'>
       {/* Background Image with overlay */}
-      <div
-        className='absolute inset-0 z-0 bg-cover bg-center'
-        style={{ backgroundImage: `url(/landing/Hike.webp)` }}
-      >
-        <div className='absolute inset-0 bg-green-800 bg-opacity-80'></div>
+      <div className='absolute inset-0 z-0'>
+        <Image
+          src='/landing/Trek.webp'
+          alt='background'
+          fill
+          priority
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+        <div className='absolute inset-0 bg-black/30' />
       </div>
 
       <div className='container mx-auto px-4 md:px-6 relative z-10'>

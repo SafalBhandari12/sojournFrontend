@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-sojourn-green: #2f5233;
+  --color-sojourn-green: #014c40;
   --color-sojourn-teal: #4a90a4;
   --color-sojourn-cream: #f5f5dc;
   --color-sojourn-gray: #4a5568;
@@ -13,6 +13,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-sojourn-green: #014c40;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,7 +36,7 @@ body {
 
 /* Custom component styles */
 .btn-primary {
-  background-color: #2f5233;
+  background-color: var(--color-sojourn-green);
   color: #f5f5dc;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
@@ -46,13 +47,17 @@ body {
   display: inline-block;
 }
 
+.text-color-primary {
+  color: var(--color-sojourn-green);
+}
+
 .btn-primary:hover {
   background-color: rgba(47, 82, 51, 0.9);
 }
 
 .btn-secondary {
   background-color: #f5f5dc;
-  color: #2f5233;
+  color: var(--color-sojourn-green);
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 500;

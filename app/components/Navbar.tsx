@@ -44,13 +44,13 @@ const Navbar: React.FC<NavbarProps> = ({ onLogin }) => {
           <div className='hidden md:flex items-center space-x-8'>
             <a
               href='#features'
-              className='font-medium text-green-800 hover:text-teal-600 transition-colors'
+              className='font-medium text-color-primary hover:text-teal-600 transition-colors'
             >
               Features
             </a>
             <a
               href='#destinations'
-              className='font-medium text-green-800 hover:text-teal-600 transition-colors'
+              className='font-medium text-color-primary transition-colors'
             >
               Destinations
             </a>

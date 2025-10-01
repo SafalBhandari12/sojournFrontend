@@ -1,17 +1,21 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Hero = () => {
   return (
     <section className='relative h-screen flex items-center' id='home'>
       {/* Background Image */}
-      <div
-        className='absolute inset-0 z-0 bg-cover bg-center'
-        style={{ backgroundImage: `url(/landing/Trek.webp)` }}
-      >
-        {/* Overlay */}
-        <div className='absolute inset-0 bg-black bg-opacity-30'></div>
+      <div className='absolute inset-0 z-0'>
+        <Image
+          src='/landing/Trek.webp'
+          alt='background'
+          fill
+          priority
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+        <div className='absolute inset-0 bg-black/30' />
       </div>
 
       {/* Content */}
