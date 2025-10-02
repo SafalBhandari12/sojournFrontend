@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 interface NavbarProps {
   onLogin: () => void;
@@ -9,6 +11,8 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onLogin }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { user, logout } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +26,17 @@ const Navbar: React.FC<NavbarProps> = ({ onLogin }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleVendorRegistration = () => {
+    router.push("/auth/vendorRegistration");
+  };
+
+  const handleDashboard = () => {
+    if (user) {
+      // Always redirect to vendor status page for all users
+      router.push("/dashboard/vendor-status");
+    }
+  };
 
   return (
     <nav
@@ -57,9 +72,32 @@ const Navbar: React.FC<NavbarProps> = ({ onLogin }) => {
             <a href='#download' className='btn-primary'>
               Download Now
             </a>
-            <button className='btn-primary' onClick={onLogin}>
-              Login
-            </button>
+
+            {user ? (
+              <div className='flex items-center space-x-4'>
+                <button
+                  className='btn-secondary text-sm hover:curs'
+                  onClick={handleDashboard}
+                >
+                  Dashboard
+                </button>
+                <button className='btn-primary text-sm' onClick={logout}>
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className='flex items-center space-x-4'>
+                <button
+                  className='btn-secondary'
+                  onClick={handleVendorRegistration}
+                >
+                  Become a Vendor
+                </button>
+                <button className='btn-primary' onClick={onLogin}>
+                  Login
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -94,22 +132,60 @@ const Navbar: React.FC<NavbarProps> = ({ onLogin }) => {
             >
               Destinations
             </a>
-            <button
-              className='block bg-green-800 text-amber-50 btn-secondary px-4'
-              onClick={() => {
-                setIsMenuOpen(false);
-                onLogin();
-              }}
-            >
-              Login
-            </button>
             <a
               href='#download'
-              className='btn-primary inline-block'
+              className='btn-primary inline-block mb-2'
               onClick={() => setIsMenuOpen(false)}
             >
               Download Now
             </a>
+
+            {user ? (
+              <div className='space-y-2'>
+                <div className='text-sm text-gray-600 py-2'>
+                  Welcome, {user.phoneNumber}
+                </div>
+                <button
+                  className='block w-full bg-blue-600 text-white px-4 py-2 rounded btn-secondary'
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    handleDashboard();
+                  }}
+                >
+                  Dashboard
+                </button>
+                <button
+                  className='block w-full bg-red-600 text-white px-4 py-2 rounded btn-primary'
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    logout();
+                  }}
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className='space-y-2'>
+                <button
+                  className='block w-full bg-green-600 text-white px-4 py-2 rounded btn-secondary'
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    handleVendorRegistration();
+                  }}
+                >
+                  Become a Vendor
+                </button>
+                <button
+                  className='block w-full bg-green-800 text-amber-50 px-4 py-2 rounded btn-primary'
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    onLogin();
+                  }}
+                >
+                  Login
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
